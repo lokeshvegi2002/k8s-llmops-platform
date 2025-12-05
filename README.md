@@ -1,19 +1,24 @@
-Local K8s LLMOps Platform: Self-Hosted AI with SRE Observability
+# Local K8s LLMOps Platform: Self-Hosted AI with SRE Observability
 
-📖 Introduction
+![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=Prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
 
-This project demonstrates a production-grade implementation of a Generative AI Platform running locally on Kubernetes (Minikube).
+## 📖 Introduction
+This project demonstrates a production-grade implementation of a **Generative AI Platform** running locally on Kubernetes (Minikube). 
 
-Unlike standard deployments, this project focuses on LLMOps and Site Reliability Engineering (SRE) principles. It solves the challenge of running resource-intensive AI models (Microsoft Phi-3) on constrained hardware (8GB RAM) by implementing:
+Unlike standard deployments, this project focuses on **LLMOps** and **Site Reliability Engineering (SRE)** principles. It solves the challenge of running resource-intensive AI models (Microsoft Phi-3) on constrained hardware (8GB RAM) by implementing:
 
-Capacity Planning: "Right-Sized" node allocation (4 CPU / 6GB RAM) to prevent OOM kills.
+* **Capacity Planning:** "Right-Sized" node allocation (4 CPU / 6GB RAM) to prevent OOM kills.
+* **Efficient Storage:** Custom Init Containers to manage large model weights (`.gguf`) via Persistent Volumes, keeping Docker images lightweight.
+* **Deep Observability:** A full Prometheus/Grafana stack to visualize inference latency (~83s on CPU) and CPU saturation in real-time.
 
-Efficient Storage: Custom Init Containers to manage large model weights (.gguf) via Persistent Volumes, keeping Docker images lightweight.
+---
 
-Deep Observability: A full Prometheus/Grafana stack to visualize inference latency (~83s on CPU) and CPU saturation in real-time.
+## 🏗️ Architecture
 
-🏗️ Architecture
-
+```mermaid
 graph TD
     User((User)) -->|Browser| Ingress[Port-Forward Tunnel]
     Ingress -->|HTTP| Frontend[Open WebUI Pod]
@@ -31,7 +36,6 @@ graph TD
             Grafana[Grafana] -->|Queries| Prometheus
         end
     end
-
 
 🛠️ Prerequisites
 
