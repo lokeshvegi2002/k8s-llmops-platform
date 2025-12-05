@@ -113,6 +113,6 @@ URL: http://localhost:3000
 
 ## 📊 SRE Insights
 
-* **Latency:** Average inference time on CPU is ~83 seconds. Future improvements would involve GPU node groups (AWS g4dn).
-* **Resources:** Idle memory usage is ~4GB. Active inference spikes CPU usage to 4 cores.
+Latency: Average inference time on CPU is ~83 seconds. Future improvements would involve GPU node groups (AWS g4dn).
 
+Resources: Idle memory usage is ~4GB. Active inference spikes CPU usage to 4 cores.
